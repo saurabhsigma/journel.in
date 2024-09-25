@@ -11,12 +11,12 @@ const page = () =>{
     <div className="">
       <Nav />
     </div>
-    {/* <div>
+    <div>
       <h2>Welcome to the website!</h2>
       <Link href="/View">View your posts</Link>
       <br />
       <Link href="/Write">write new post</Link>
-    </div> */}
+    </div>
     </>
   )
 }

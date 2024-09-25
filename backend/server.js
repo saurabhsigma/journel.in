@@ -1,41 +1,24 @@
 const express = require("express");
-// requiring all the necessary libs and initialisation
+const connectDB = require('./db');
+const postRoutes = require('./routes/post');
+
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 const app = express();
-// for using json data in our website
-app.use(express.json())
+connectDB();
 
-const posts = [{
-    date: "2015-12-12",
-    title: "My first day at college",
-    description: "Today was my first day at my college."
-}, {
-    date: "2015-12-16", // Corrected date
-    title: "My first day at school",
-    description: "Today was my first day at school."
-}];
+app.use(cors());
+app.use(express.json());
+app.use('/api/v1/post', postRoutes);
 
-app.get("/", (req, res) => {
-    res.send("Hello, welcome to the journal.in");
-    console.log("The user has entered the main website homepage!");
-});
 
-app.get("/user-posts", (req, res) => {
-    console.log("This is where the user posts will be displayed!");
-    res.json(posts);
-});
+const PORT = process.env.PORT || 4002;
 
-app.post("/user-post", (req, res) => {
-    try {
-        const data = req.body; // Directly access req.body
-        posts.push(data);
-        console.log("Succeeded");
-        res.status(201).send("Post added successfully!"); // Send a success response
-    } catch (e) {
-        console.log("Error: ", e);
-        res.status(500).send("An error occurred while adding the post."); // Send an error response
-    }
-});
 
-app.listen(3001, () => {
-    console.log("Server is running on port 3000");
-});
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+  
