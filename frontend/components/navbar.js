@@ -13,9 +13,9 @@ const Nav = () =>{
             <div id="links" className="">
                 <Link href="/View" className="m-2">View!</Link>
                 <Link href="/Write" className="m-2">Write!</Link>
-                <Link href="/Write" className="m-2">
+                {/* <Link href="/Write" className="m-2">
                     <button className="border-1 bg-white text-black p-1 rounded-md">Signup/Login!</button>
-                </Link>
+                </Link> */}
             </div>
         
         
