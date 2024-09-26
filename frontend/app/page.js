@@ -1,11 +1,13 @@
-"use client"
+"use client"; // Ensures this is a client component
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Nav from "@/components/navbar";
-import './globals.css';
+import Nav from "@/components/navbar"; // Ensure Nav component is available
+import './globals.css'; // Global styles
 
 const Page = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,12 +15,18 @@ const Page = () => {
         const response = await axios.get('http://localhost:4002/api/v1/post/view');
         setPosts(response.data);
       } catch (error) {
-        console.log("Error fetching posts:", error);
+        console.error("Error fetching posts:", error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
     };
 
     fetchData();
   }, []);
+
+  if (loading) {
+    return <div className="text-center py-10">Loading...</div>; // Loading message
+  }
 
   return (
     <div className="bg-gray-100 min-h-screen">
