@@ -16,10 +16,12 @@ const WritePage = () => {
     setLoading(true);
 
     try {
+      
       await axios.post("http://localhost:4002/api/v1/post/write", {
         title,
         content,
       });
+      
       setLoading(false);
       router.push("/View"); // Redirect to the view page after successful post creation
     } catch (error) {
@@ -34,6 +36,7 @@ const WritePage = () => {
     < Nav />
     <div className="container mx-auto py-10">
 
+      
       <h1 className="text-3xl font-bold mb-8 text-center">Write a New Post</h1>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow">
         <div className="mb-4">

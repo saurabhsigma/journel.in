@@ -30,6 +30,8 @@ const Nav = () => {
         } catch (error) {
             console.error('Logout failed', error);
         }
+
+        
     };
 
     return (
@@ -37,7 +39,9 @@ const Nav = () => {
             
             <div id="links" className="flex items-center">
                 <Link href="/View" className="m-2">View!</Link>
-                Write!
+                <Link href="/Write" className="m-2">Write!</Link>
+
+
                 {isLoggedIn ? (
                     <>
                         <span className="m-2 text-white">Welcome, {username}!</span>
@@ -53,6 +57,9 @@ const Nav = () => {
                         <button className="border-1 bg-white text-black p-1 rounded-md">Login/Signup!</button>
                     </Link>
                 )}
+
+
+                
             </div>
         </div>
     );
